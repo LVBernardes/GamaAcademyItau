@@ -3,6 +3,7 @@ package br.com.itau.AgendaFacil.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import br.com.itau.AgendaFacil.dao.AgencyDAO;
 import br.com.itau.AgendaFacil.model.Agency;
 
 @RestController
+@CrossOrigin("*")
 public class AgencyController {
 	
 	/* A anotação @Autowired indica que a referencia DAO do tipo AgenciaDAO será INJETADA
