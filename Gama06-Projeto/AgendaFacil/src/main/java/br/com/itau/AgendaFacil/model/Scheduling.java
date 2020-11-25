@@ -34,7 +34,7 @@ public class Scheduling {
 	
 	@ManyToOne
 	@JoinColumn(name="id_agencia")
-	private int agencyId;
+	private Agency agency;
 
 	public int getId() {
 		return id;
@@ -92,14 +92,12 @@ public class Scheduling {
 		this.observation = observation;
 	}
 
-	public int getAgencyId() {
-		return agencyId;
+	public Agency getAgency() {
+		return agency;
 	}
 
-	public void setAgencyId(int agencyId) {
-		this.agencyId = agencyId;
+	public void setAgency(Agency agency) {
+		this.agency = agency;
 	}
-	
-	
-	
+
 }

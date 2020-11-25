@@ -1,11 +1,6 @@
 package br.com.itau.AgendaFacil.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tbl_usuario")
@@ -13,7 +8,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_usuario")
+	@Column(name="id_user")
 	private int id;
 	
 	@Column(name="nome", length = 100)
