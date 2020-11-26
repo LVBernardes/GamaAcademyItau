@@ -1,6 +1,8 @@
+backendURL = "http://localhost:8080";
+
 function validateUserSession() {
     var userRaw = localStorage.getItem("UserData");
-    
+
     if (!userRaw) {
 
         window.location = "index.html";
@@ -11,30 +13,29 @@ function validateUserSession() {
 
         document.getElementById("userPhoto").innerHTML = `<img src="${user.photoLink}" width="100%">`;
 
-        document.getElementById("userBio").innerHTML = `<h4>${user.name}<\h4>
-                                                        <p>E-mail: ${user.email}<\p>
-                                                        <p>RACF: ${user.racf}<\p>`;
+        document.getElementById("userBio").innerHTML = `<h4>${user.name}<\h4>                                                 <p>E-mail: ${user.email}<\p>                                                    <p>RACF: ${user.racf}<\p>`;
 
     }
 
 }
 
 function loadAgencies(tagID) {
-    backendURL = "http://localhost:8080";
     apiPath = "/agencias";
-    
-    fetch(backendURL+apiPath)
+
+
+    fetch(backendURL + apiPath)
         .then(resp => resp.json())
-        .then(list => createSelectorOptions(list,tagID));
+        .then(list => createSelectorOptions(list, "id", "name", tagID));
 }
 
-function createSelectorOptions(list,tagID) {
-    let selectorHTML = "";
 
-    for (let i=0; i<list.length; i++) {
-        let ag = list[i];
+function createSelectorOptions(list, listID, listName, tagID) {
+    let selectorHTML = `<option selected>Selecione uma opção</option>`;
+
+    for (let i = 0; i < list.length; i++) {
+        console.log(list[i].id + " " + list[i].name)
         selectorHTML += `<option value="${list[i].id}">${list[i].name}</option>`;
     }
 
-    document.getElementById(tagID).append(selectorHTML);
+    document.getElementById(tagID).innerHTML = selectorHTML;
 }

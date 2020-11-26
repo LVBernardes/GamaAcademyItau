@@ -30,7 +30,7 @@ function createSchedule() {
     let schedDate = document.getElementById("schedDate").value;
     let schedTime = document.getElementById("schedTime").value;
     let obs = document.getElementById("obs").value;
-    let agency = parseInt(document.getElementById("agency").value);
+    let agencyID = parseInt(document.getElementById("agency").value);
 
     let msgBody = {
         customerName : customName,
@@ -39,7 +39,9 @@ function createSchedule() {
         schedulingDate : schedDate,
         schedulingTime : schedTime,
         observation : obs,
-        agency : agency
+        agency : {
+            id: agencyID
+        }
     }
 
     let msgHeader = {
@@ -61,5 +63,6 @@ function treatResponse(resp) {
     }
     else {
         alert("ERRO ao atender solicitacao");
+        console.log(resp.body);
     }
 }
