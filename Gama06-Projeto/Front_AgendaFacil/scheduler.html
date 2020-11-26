@@ -14,9 +14,105 @@
     <link rel="stylesheet" href="scheduler.css">
 </head>
 
-<body onload="loadAgencies()">
+<body onload="loadAgencies('agency')">
+
+    <div class="container" id="header">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>Formulário de Agendamento</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="scheduleForm">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="customerName">Nome</label>
+                    <input type="text" id="customerName" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="customerEmail">E-mail</label>
+                    <input type="email" id="customerEmail" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="customerPhone">Telefone / Whatsapp</label>
+                    <input type="text" id="customerPhone" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="schedDate">Data</label>
+                    <input type="date" id="schedDate" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="agency">Agência</label>
+                    <select id="agency" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="schedTime">Horário Mínimo de Chegada</label>
+                    <input type="text" id="schedTime" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="endTime">Horário Máximo do Atendimento</label>
+                    <input type="text" id="endTime" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="obs">Observação</label>
+                    <input type="text" id="obs" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="createSchedule()" type="submit">Agendar</button>
+            </div>
+        </div>
 
 
+
+
+
+
+
+
+
+
+
+
+    </div>
 
 
 
