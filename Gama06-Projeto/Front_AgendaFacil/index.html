@@ -19,6 +19,7 @@
 <body class="text-center">
 
     <div class="container">
+
         <div class="row">
             <div class="col"></div>
             <div class="col-xl">
@@ -50,18 +51,19 @@
         </div> -->
 
 
-        <form class="form-signin">
+        <div id="signin">
 
             <div class="form-label-group">
                 <input id="userID" type="text" class="form-control" placeholder="E-mail ou RACF" autofocus>
             </div>
             <div class="form-label-group">
                 <input id="userPswrd" type="password" class="form-control" placeholder="Senha">
-                <button id="loginButton" onclick="auth()" type="submit" class="btn btn-primary">Entrar</button>
-                <div id="loginMsg"></div>
+            </div>
+            <button id="loginButton" onclick="auth()" type="submit" class="btn btn-primary">Entrar</button>
 
+            <div id="loginMsg"></div>
 
-        </form>
+        </div>
 
 
     </div>

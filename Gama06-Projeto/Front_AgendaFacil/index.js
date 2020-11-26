@@ -1,7 +1,8 @@
 function auth() {
-    var userLogin = document.getElementById("userID").value;
-    var userPswrd = document.getElementById("userPswrd").value;
-    var backendURL = "http://localhost:8080/login"
+    let userLogin = document.getElementById("userID").value;
+    let userPswrd = document.getElementById("userPswrd").value;
+    let backendURL = "http://localhost:8080/"
+    let apiPath = "/login";
 
     //document.getElementById("loginButton").setAttribute("aria-pressed", "false");
 
@@ -19,23 +20,23 @@ function auth() {
 
     } else {
 
-        var msgBody = {
+        let msgBody = {
             email: userLogin,
             racf: userLogin,
             pswrd: userPswrd
         };
 
-        var msgHeaders = {
+        let msgHeaders = {
             "Content-Type": "application/json"
         };
 
-        var msg = {
+        let msg = {
             method: "POST",
             body: JSON.stringify(msgBody),
             headers: msgHeaders
         };
 
-        fetch(backendURL, msg).then(resp => treatResponse(resp));
+        fetch(backendURL+apiPath, msg).then(resp => treatResponse(resp));
 
     }
 
@@ -55,6 +56,7 @@ function treatResponse(response) {
         document.getElementById("loginMsg").setAttribute("class", "alert alert-warning text-center");
         document.getElementById("loginMsg").setAttribute("role", "alert");;
         document.getElementById("userPswrd").value = "";
+        document.getElementById("userPswrd").focus();
 
     } else if (response.status == 404) {
         document.getElementById("loginMsg").innerHTML = "Usuário inválido";
@@ -62,6 +64,7 @@ function treatResponse(response) {
         document.getElementById("loginMsg").setAttribute("role", "alert");
         document.getElementById("userID").value = "";
         document.getElementById("userPswrd").value = "";
+        document.getElementById("userID").focus();
 
     } else {
         document.getElementById("loginMsg").innerHTML = "Erro desconhecido";

@@ -43,3 +43,13 @@ insert into proj_agendamento.tbl_usuario
     
     
 select * from proj_agendamento.tbl_usuario;
+
+insert into itmn032_agencia values
+        (null, '0123 - PAB Zezinho Magalhaes',10,14),
+        (null, '0124 - Agencia Hogwarts', 10,14),
+        (null, '9877 - Agencia Death Star',10,14),
+        (null, '9991 - Agencia Minas Tirith' , 10, 14),
+        (null, '8172 - Agencia Mordor', 10, 14),
+        (null, '1271 - Agencia Springfield', 10,14);
+
+select * from proj_agendamento.itmn032_agencia;
