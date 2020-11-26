@@ -26,6 +26,29 @@
 
         </div>
 
+
+
+        <!-- <div class="row">
+            <div class="form-group">
+                <label for="userID">Email ou RACF</label>
+                <input type="text" class="form-control" id="userID">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="userPswrd">Senha</label>
+                <input type="password" class="form-control" id="userPswrd">
+            </div>
+        </div>
+        <div class="row">
+            <button onclick="auth()" type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+        <div class="row">
+            <div id="loginMsg"></div>
+        </div> -->
+
+
+
         <div class="form-group">
             <label for="userID">Email ou RACF</label>
             <input type="text" class="form-control" id="userID">
@@ -34,15 +57,44 @@
             <label for="userPswrd">Senha</label>
             <input type="password" class="form-control" id="userPswrd">
         </div>
-        <button onclick="auth()" type="submit" class="btn btn-primary">Entrar</button>
+        <button id="loginButton" onclick="auth()" type="submit" class="btn btn-primary">Entrar</button>
+        <div id="loginMsg"></div>
 
-        <div class="row">
+
+
+        <!-- <div class="row">
             <div class="col-12 text-center">
-                <h6 id="loginMsg"></h4>
+                <h6 id="loginMsg">
+                    </h4>
             </div>
-        </div>
+        </div> -->
 
     </div>
+
+    <script>
+        let userLoginInput = document.getElementById("userID");
+        let userPswrdInput = document.getElementById("userPswrd");
+
+        userLoginInput.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("loginButton").click();
+            }
+        });
+
+        userPswrdInput.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("loginButton").click();
+            }
+        });
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
