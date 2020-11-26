@@ -15,12 +15,12 @@ import br.com.itau.AgendaFacil.model.User;
 public class UserController {
 
 	@Autowired
-	UserDAO userDAO;
+	UserDAO dao;
 
 	@PostMapping("/login")
 	public ResponseEntity<User> login(@RequestBody User userLogin) {
 		
-		User resp = userDAO.findByEmailOrRacf(userLogin.getEmail(), userLogin.getRacf());
+		User resp = dao.findByEmailOrRacf(userLogin.getEmail(), userLogin.getRacf());
 		
 		if (resp != null) {
 			if (resp.getPswrd().equals(userLogin.getPswrd())) {

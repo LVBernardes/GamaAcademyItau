@@ -18,10 +18,10 @@ public class Scheduling {
 	private String customerName;
 	
 	@Column(name="email_cli", length=100)
-	private String custumerEmail;
+	private String customerEmail;
 	
 	@Column(name="celular_cli", length=20)
-	private String custumerPhone;
+	private String customerPhone;
 	
 	@Column(name="data_agendamento")
 	private LocalDate schedulingDate;
@@ -52,20 +52,20 @@ public class Scheduling {
 		this.customerName = customerName;
 	}
 
-	public String getCustumerEmail() {
-		return custumerEmail;
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
 
-	public void setCustumerEmail(String custumerEmail) {
-		this.custumerEmail = custumerEmail;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
 
-	public String getCustumerPhone() {
-		return custumerPhone;
+	public String getCustomerPhone() {
+		return customerPhone;
 	}
 
-	public void setCustumerPhone(String custumerPhone) {
-		this.custumerPhone = custumerPhone;
+	public void setCustomerPhone(String customerPhone) {
+		this.customerPhone = customerPhone;
 	}
 
 	public LocalDate getSchedulingDate() {
@@ -99,5 +99,6 @@ public class Scheduling {
 	public void setAgency(Agency agency) {
 		this.agency = agency;
 	}
+
 
 }

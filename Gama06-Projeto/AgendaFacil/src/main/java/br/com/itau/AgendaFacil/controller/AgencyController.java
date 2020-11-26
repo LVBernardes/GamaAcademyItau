@@ -20,12 +20,12 @@ public class AgencyController {
 	 */
 	
 	@Autowired
-	private AgencyDAO agencyDAO;
+	private AgencyDAO dao;
 	
 	@GetMapping("/agencias")
 	public ArrayList<Agency> RetrieveAll(){
 		ArrayList<Agency> lista;   						// declarei a lista
-		lista = agencyDAO.findAllByOrderByName(); 		    // recuperei os registros do banco e armaezenei na lista (SELECT)
+		lista = dao.findAllByOrderByName(); 		    // recuperei os registros do banco e armaezenei na lista (SELECT)
 		return lista; 									// retorno os dadoss
 	}
 
