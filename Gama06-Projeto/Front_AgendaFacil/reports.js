@@ -1,3 +1,5 @@
+import { datatables } from "DataTables/datatables.min.js";
+
 backendURL = "http://localhost:8080";
 
 function validateUserSession() {
@@ -223,9 +225,12 @@ function showSchedulings(response) {
         let reportTable = reportTableGenerator(response.data);
 
         document.getElementById("reportPanel").innerHTML = reportTable;
-        $(document).ready( function () {
-            $('#resultTable').DataTable();
-        } );
+
+        $(document).ready(
+            function () {
+                $('#resultTable').DataTable();
+            }
+        );
 
     } else {
         console.log(response.status);
@@ -286,9 +291,9 @@ function presentReportHTML(array) {
 
 }
 
-function reportTableGenerator (array) {
+function reportTableGenerator(array) {
 
-    let reportTable =   `<table class= "table "id="resultTable">
+    let reportTable = `<table class= "table "id="resultTable">
 	                    <thead>
                         <tr>
                             <th>Agência</th>
@@ -314,7 +319,7 @@ function reportTableGenerator (array) {
 	                    </tr>`;
     }
 
-    reportTable +=  `</tbody>
+    reportTable += `</tbody>
                     </table>`;
 
     console.log(reportTable);
