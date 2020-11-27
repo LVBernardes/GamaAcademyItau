@@ -57,42 +57,43 @@ function generateReport() {
     switch (mode) {
         case 0:
             agencyFilter = 0;
-            dateFilter = "01/01/01";
+            dateFilter = "1/1/01";
             nameFilter = "";
             break;
         case 1:
             agencyFilter = document.getElementById("agencyFilter").value;
-            dateFilter = "01/01/01";
+            dateFilter = "1/1/01";
             nameFilter = "";
             break;
         case 2:
             agencyFilter = 0;
-            dateFilter = document.getElementById("dateFilter").value;
+            console.log(document.getElementById("dateFilter").value);
+            dateFilter = convertISODateToUSADate(document.getElementById("dateFilter").value);
             nameFilter = "";
             break;
         case 3:
             agencyFilter = document.getElementById("agencyFilter").value;
-            dateFilter = document.getElementById("dateFilter").value;
+            dateFilter = convertISODateToUSADate(document.getElementById("dateFilter").value);
             nameFilter = "";
             break;
         case 4:
             agencyFilter = 0;
-            dateFilter = "01/01/01";
+            dateFilter = "1/1/01";
             nameFilter = document.getElementById("nameFilter").value;
             break;
         case 5:
             agencyFilter = document.getElementById("agencyFilter").value;
-            dateFilter = "01/01/01";
+            dateFilter = "1/1/01";
             nameFilter = document.getElementById("nameFilter").value;
             break;
         case 6:
             agencyFilter = 0;
-            dateFilter = document.getElementById("dateFilter").value;
+            dateFilter = convertISODateToUSADate(document.getElementById("dateFilter").value);
             nameFilter = document.getElementById("nameFilter").value;
             break;
         case 7:
             agencyFilter = document.getElementById("agencyFilter").value;
-            dateFilter = document.getElementById("dateFilter").value;
+            dateFilter = convertISODateToUSADate(document.getElementById("dateFilter").value);
             nameFilter = document.getElementById("nameFilter").value;
             break;
 
@@ -111,16 +112,32 @@ function generateReport() {
     //console.log(url);
     //console.log(dateFilter);
 
-    fetch(url)
-        .then(resp => resp.json())
-        .then(jsonResp => showSchedulings(jsonResp));
+
+
+    fetch(url).then(resp =>
+        resp.json().then(data => ({
+            data: data,
+            status: resp.status
+        })
+        ).then(response => showSchedulings(response)));
 
 }
 
 function showSchedulings(response) {
     if (response.status == 200) {
-        console.log(response);
+        console.log(response.status);
+        console.log(response.data);
     } else {
+        console.log(response.status);
         console.log(response);
     }
+}
+
+function convertISODateToUSADate(dateISO) {
+    date = dateISO.split("-");
+    let year = date[0].slice(2);
+    let month = date[1];
+    let dt = date[2];
+
+    return (month + '/' + dt + '/' + year);
 }
