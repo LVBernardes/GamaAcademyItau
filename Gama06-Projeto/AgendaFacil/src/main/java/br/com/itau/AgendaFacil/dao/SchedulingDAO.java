@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.data.repository.CrudRepository;
 
+import br.com.itau.AgendaFacil.model.Agency;
 import br.com.itau.AgendaFacil.model.Scheduling;
 
 public interface SchedulingDAO extends CrudRepository<Scheduling, Integer> {
@@ -17,7 +18,7 @@ public interface SchedulingDAO extends CrudRepository<Scheduling, Integer> {
 	/* Recupera do BD usando filtro (Nome:0,Data:0,Agencia:1) => modo:1
 	 * Ordena por Data
 	 */
-	public ArrayList<Scheduling> findAllByAgencyOrderBySchedulingDate(int agencyID);
+	public ArrayList<Scheduling> findAllByAgencyOrderBySchedulingDate(Agency agency);
 	
 	/* Recupera do BD usando filtro (Nome:0,Data:1,Agencia:0) => modo:2
 	 * Ordena por Agencia
@@ -27,7 +28,7 @@ public interface SchedulingDAO extends CrudRepository<Scheduling, Integer> {
 	/* Recupera do BD usando filtro (Nome:0,Data:1,Agencia:1) => modo:3
 	 * Ordena por Horario de Atendimento
 	 */
-	public ArrayList<Scheduling> findAllByAgencyAndSchedulingDateOrderBySchedulingTime(int agencyID,
+	public ArrayList<Scheduling> findAllByAgencyAndSchedulingDateOrderBySchedulingTime(Agency agency,
 																					   LocalDate date);
 	
 	/* Recupera do BD usando filtro (Nome:1,Data:0,Agencia:0) => modo:4
@@ -38,7 +39,7 @@ public interface SchedulingDAO extends CrudRepository<Scheduling, Integer> {
 	/* Recupera do BD usando filtro (Nome:1,Data:0,Agencia:1) => modo:5
 	 * Ordena por Data
 	 */
-	public ArrayList<Scheduling> findAllByAgencyAndCustomerNameContainsOrderBySchedulingDate(int agencyID,
+	public ArrayList<Scheduling> findAllByAgencyAndCustomerNameContainsOrderBySchedulingDate(Agency agency,
 																							 String name);
 
 	/* Recupera do BD usando filtro (Nome:1,Data:1,Agencia:0) => modo:6
@@ -48,7 +49,7 @@ public interface SchedulingDAO extends CrudRepository<Scheduling, Integer> {
 																				  				String name);
 	
 	// Recupera do BD usando filtro (Nome:1,Data:1,Agencia:1) => modo:7
-	public ArrayList<Scheduling> findAllByAgencyAndSchedulingDateAndCustomerNameContains(int agencyID,
+	public ArrayList<Scheduling> findAllByAgencyAndSchedulingDateAndCustomerNameContains(Agency agency,
 																						 LocalDate date,
 																						 String name);
 
