@@ -219,9 +219,13 @@ function showSchedulings(response) {
         console.log(response.status);
         console.log(response.data);
 
-        let listHTML = presentReportHTML(response.data);
+        //let listHTML = presentReportHTML(response.data);
+        let reportTable = reportTableGenerator(response.data);
 
-        document.getElementById("reportPanel").innerHTML = listHTML;
+        document.getElementById("reportPanel").innerHTML = reportTable;
+        $(document).ready( function () {
+            $('#resultTable').DataTable();
+        } );
 
     } else {
         console.log(response.status);
@@ -279,5 +283,42 @@ function presentReportHTML(array) {
         </div>`;
     }
     return reportLines;
+
+}
+
+function reportTableGenerator (array) {
+
+    let reportTable =   `<table class= "table "id="resultTable">
+	                    <thead>
+                        <tr>
+                            <th>Agência</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Cliente</th>
+                            <th>E-mail</th>
+                            <th>Telefone/Whatsapp</th>
+                            <th>Obs</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+
+    for (let i = 0; i < array.length; i++) {
+        reportTable += `<tr>
+		                <td>${array[i].agency.name}</td>
+                        <td>${array[i].schedulingDate}</td>
+                        <td>${array[i].schedulingTime}</td>
+                        <td>${array[i].customerName}</td>
+                        <td>${array[i].customerEmail}</td>
+                        <td>${array[i].customerPhone}</td>
+                        <td>${array[i].observation}</td>
+	                    </tr>`;
+    }
+
+    reportTable +=  `</tbody>
+                    </table>`;
+
+    console.log(reportTable);
+
+    return reportTable;
 
 }
