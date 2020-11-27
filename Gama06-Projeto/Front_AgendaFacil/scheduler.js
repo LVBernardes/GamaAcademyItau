@@ -32,6 +32,14 @@ function createSchedule() {
     let obs = document.getElementById("obs").value;
     let agencyID = parseInt(document.getElementById("agency").value);
 
+    let fillStatus = [];
+    fillStatus.push(customName,customEmail,customPhone,schedDate,schedTime,agencyID);
+
+    if (fillStatus.indexOf("") != -1) {
+        alert("Preencha todos os dados requeridos");
+        return 1
+    }
+
     let msgBody = {
         customerName : customName,
         customerEmail : customEmail,
@@ -59,7 +67,8 @@ function createSchedule() {
 
 function treatResponse(resp) {
     if (resp.status == 201) {
-        alert("Solicitacao de agendamento Efetivada!")
+        alert("Solicitacao de agendamento Efetivada!");
+        window.location = "scheduler.html";
     }
     else {
         alert("ERRO ao atender solicitacao");

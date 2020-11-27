@@ -1,4 +1,3 @@
-import { datatables } from "DataTables/datatables.min.js";
 
 backendURL = "http://localhost:8080";
 
@@ -226,16 +225,40 @@ function showSchedulings(response) {
 
         document.getElementById("reportPanel").innerHTML = reportTable;
 
-        $(document).ready(
-            function () {
-                $('#resultTable').DataTable();
-            }
-        );
 
-    } else {
-        console.log(response.status);
-        console.log(response);
-    }
+        $('#resultTable').DataTable({
+            responsive: true,
+            dom: 'Bfrtip',
+            columns: [
+                { data: "agencia"},
+                { data: "data" },
+                { data: "horario" },
+                { data: "cliente" },
+                { data: "email" },
+                { data: "telefone" },
+                { data: "obs" }
+            ],
+            colReorder: true,
+            buttons: [
+                {
+                    extend: 'collection',
+                    text: 'Export',
+                    buttons: [
+                        'copy',
+                        'excel',
+                        'csv',
+                        'pdf',
+                        'print'
+                    ]
+                }
+            ]
+        });
+
+
+} else {
+    console.log(response.status);
+    console.log(response);
+}
 }
 
 function convertISODateToCustomDate(dateISO, type) {
