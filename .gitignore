@@ -25,3 +25,9 @@ hs_err_pid*
 # Input adn Output files
 *.input
 *.output
+
+# General files
+*.[oa]
+
+# Temp files
+*~
